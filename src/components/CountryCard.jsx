@@ -1,6 +1,6 @@
 export default function CountryCard() {
     return (
-        <div className="bg-white rounded-md shadow-md">
+        <div className="bg-white rounded-md shadow-md hover:cursor-pointer">
             <img className="object-fill rounded-t-md w-full" src="src/assets/germany.png"/>
             <div className="p-6">
                 <h1 className="font-bold mb-3">Germany</h1>
