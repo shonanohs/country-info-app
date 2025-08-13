@@ -4,6 +4,7 @@ import axios from 'axios'
 
 export default function App() {
     const [countries, setCountries] = useState([])
+    const [filteredCountries, setFilteredCountries] = useState([])
     const [error, setError] = useState(null)
     const [loading, setLoading] = useState(true)
 
@@ -14,6 +15,7 @@ export default function App() {
             "https://restcountries.com/v3.1/all?fields=flags,name,population,region,capital"
         );
         setCountries(response.data);
+        setFilteredCountries(response.data);
         } catch (error) {
         setError(error);
         } finally {
@@ -25,7 +27,7 @@ export default function App() {
 
   return (
     <>
-      <Home countries={countries} loading={loading} error={error} />
+      <Home filteredCountries={filteredCountries} setFilteredCountries={setFilteredCountries} countries={countries} loading={loading} error={error} />
     </>
   )
 }
