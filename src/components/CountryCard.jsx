@@ -2,7 +2,7 @@ import { NumericFormat } from 'react-number-format';
 
 export default function CountryCard({ flag, name, population, region, capital }) {
   return (
-    <div className="bg-white rounded-md shadow-md hover:cursor-pointer">
+    <div className="bg-white rounded-md shadow-md hover:cursor-pointer dark:bg-[#2d3742]">
       <div className="w-full h-48 overflow-hidden rounded-t-md">
         <img
           className="w-full h-full object-cover"
@@ -11,7 +11,7 @@ export default function CountryCard({ flag, name, population, region, capital })
         />
       </div>
 
-      <div className="p-6">
+      <div className="p-6 dark:text-white">
         <h1 className="font-bold mb-3">{name}</h1>
         <p className="text-sm font-semibold">
           Population: <NumericFormat className="font-normal" value={population} thousandSeparator=","></NumericFormat>
