@@ -1,17 +1,20 @@
 import CountryCard from "./CountryCard";
 
-export default function CountryGrid() {
+export default function CountryGrid( {countries, loading, error} ) {
+    if (loading) return <p>Loading countries...</p>
+    if (error) return <p>Error: {error}</p>
+    
     return (
         <div className="grid gap-25 grid-cols-1 md:grid-cols-4 md:gap-15">
-            <CountryCard />
-            <CountryCard />
-            <CountryCard />
-            <CountryCard />
-            <CountryCard />
-            <CountryCard />
-            <CountryCard />
-            <CountryCard />
+            {countries.map(country => (
+                    <CountryCard 
+                        key={country.name.common} 
+                        flag={country.flags.png} 
+                        name={country.name.common} 
+                        population={country.population} 
+                        region={country.region} 
+                        capital={country.capital[0]}/>
+                    ))}
         </div>
     )
-
 }

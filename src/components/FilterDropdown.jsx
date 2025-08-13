@@ -5,7 +5,7 @@ export default function FilterDropdown() {
         <div className="relative">
             <button className="flex bg-white p-5 rounded-sm shadow-md h-15 w-60 justify-between items-center text-[#1a1a1a] hover:cursor-pointer">
                 <p>Filter by Region</p>
-                <img src="src/assets/dropdown-arrow.png" className="h-3"/>
+                <img src="src/assets/dropdown-arrow.png" className="h-3" alt="filter by region"/>
             </button>
             <div className="bg-white py-5 rounded-sm shadow-md absolute w-60 top-18 invisible">
                 <ul>

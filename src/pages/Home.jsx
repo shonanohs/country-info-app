@@ -3,7 +3,7 @@ import FilterDropdown from '../components/FilterDropdown'
 import Header from '../components/Header'
 import SearchBar from '../components/SearchBar'
 
-export default function Home() {
+export default function Home( {countries} ) {
     return (
         <>
             <Header />
@@ -12,7 +12,7 @@ export default function Home() {
                     <SearchBar />
                     <FilterDropdown />
                 </div>
-                <CountryGrid />
+                <CountryGrid countries={countries} />
             </div>
         </>
     )
