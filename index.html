@@ -4,6 +4,18 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Where in the world?</title>
+    <script>
+      (function() {
+        const savedTheme = localStorage.getItem("theme")
+        const html = document.getElementById("html")
+      
+        if (savedTheme === "dark") {
+          html.classList.add("dark")
+        } else {
+          html.classList.remove("dark")
+        }
+      })()
+    </script>
   </head>
   <body class="font-sans bg-[#fafafa] dark:bg-[#212e38]">
     <div id="root"></div>

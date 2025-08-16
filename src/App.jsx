@@ -9,18 +9,6 @@ export default function App() {
     const [error, setError] = useState(null)
     const [loading, setLoading] = useState(true)
 
-    // Set theme according to local storage
-    useEffect(() => {
-      const savedTheme = localStorage.getItem("theme");
-      const html = document.getElementById("html");
-
-      if (savedTheme === "dark") {
-        html.classList.add("dark");
-      } else {
-        html.classList.remove("dark");
-      }
-    }, [])
-
     // Fetch country info to display from REST Countries API
     useEffect(() => {
     async function fetchCountries() {
