@@ -1,5 +1,5 @@
-import { search } from "../assets/search.png"
-import { searchDark } from "../assets/search.png"
+import search from "../assets/search.png"
+import searchDark from "../assets/search-dark.png"
 
 export default function SearchBar({ setFilteredCountries, countries }) {
   function handleSearch(e) {
