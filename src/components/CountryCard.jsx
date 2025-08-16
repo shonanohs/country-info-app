@@ -14,7 +14,7 @@ export default function CountryCard({ flag, name, population, region, capital })
       <div className="p-6 dark:text-white">
         <h1 className="font-bold mb-3">{name}</h1>
         <p className="text-sm font-semibold">
-          Population: <NumericFormat className="font-normal" value={population} thousandSeparator=","></NumericFormat>
+          Population: <NumericFormat className="font-normal" value={population} thousandSeparator="," displayType="text"></NumericFormat>
         </p>
         <p className="text-sm font-semibold">
           Region: <span className="font-normal">{region}</span>

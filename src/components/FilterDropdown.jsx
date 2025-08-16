@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { dropdownLight } from "../assets/dropdown-arrow.png"
+import { dropdownDark } from "../assets/dropdown-arrow-dark.png"
 
 const regions = ["Africa", "Americas", "Asia", "Europe", "Oceania"];
 
@@ -43,12 +45,12 @@ export default function FilterDropdown({ setFilteredCountries, countries }) {
         >
         <p className="dark:text-white">Filter by Region</p>
         <img
-            src="src/assets/dropdown-arrow.png"
+            src={dropdownLight}
             className="h-3 block dark:hidden"
             alt="filter by region"
         />
         <img
-            src="src/assets/dropdown-arrow-dark.png"
+            src={dropdownDark}
             className="h-3 hidden dark:block"
             alt="filter by region"
         />

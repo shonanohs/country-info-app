@@ -1,3 +1,6 @@
+import { search } from "../assets/search.png"
+import { searchDark } from "../assets/search.png"
+
 export default function SearchBar({ setFilteredCountries, countries }) {
   function handleSearch(e) {
     const search = e.target.value.toLowerCase()
@@ -10,12 +13,12 @@ export default function SearchBar({ setFilteredCountries, countries }) {
   return (
     <div className="flex relative md:pb-0 pb-5">
       <img
-        src="src/assets/search.png"
+        src={search}
         className="z-10 absolute left-10 top-4 h-6 pointer-events-none block dark:hidden"
         alt="search"
       />
       <img
-        src="src/assets/search-dark.png"
+        src={searchDark}
         className="z-10 absolute left-10 top-4 h-6 pointer-events-none hidden dark:block"
         alt="search"
       />

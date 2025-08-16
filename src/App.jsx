@@ -1,5 +1,6 @@
 import Home from "./pages/Home"
 import { useEffect, useState } from 'react'
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import axios from 'axios'
 
 export default function App() {
@@ -27,7 +28,19 @@ export default function App() {
 
   return (
     <>
-      <Home filteredCountries={filteredCountries} setFilteredCountries={setFilteredCountries} countries={countries} loading={loading} error={error} />
+      <BrowserRouter>
+        <Routes>
+            <Route index element={
+              <Home 
+              filteredCountries={filteredCountries} 
+              setFilteredCountries={setFilteredCountries} 
+              countries={countries} 
+              loading={loading} 
+              error={error}
+              />} 
+            />
+        </Routes>
+      </BrowserRouter>
     </>
   )
 }
