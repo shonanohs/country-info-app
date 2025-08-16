@@ -4,8 +4,10 @@ import lightIcon from "../assets/light-mode.png";
 
 export default function Header() {
   function toggleTheme() {
-      document.getElementById("html").classList.toggle("dark")
-  }
+    const html = document.getElementById("html");
+    const isDark = html.classList.toggle("dark");
+    localStorage.setItem("theme", isDark ? "dark" : "light");
+}
 
   return (
     <nav className="flex justify-between items-center h-24 px-10 lg:px-32 shadow-md bg-white dark:bg-[#2d3742]">
