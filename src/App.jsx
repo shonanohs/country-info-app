@@ -1,4 +1,5 @@
 import Home from "./pages/Home"
+import CountryDetail from "./pages/CountryDetail";
 import { useEffect, useState } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import axios from 'axios'
@@ -40,6 +41,7 @@ export default function App() {
               error={error}
               />} 
             />
+            <Route path="/country" element={<CountryDetail />} />
         </Routes>
       </BrowserRouter>
     </>
