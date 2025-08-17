@@ -21,7 +21,7 @@ export default function CountryDetail({ countries }) {
     return (
         <>
             <Header />
-            <CountryInfo country={country} />
+            <CountryInfo country={country} countries={countries} />
         </>
     )
 }

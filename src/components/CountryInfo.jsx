@@ -2,21 +2,25 @@ import backLight from "../assets/back.png";
 import backDark from "../assets/back-dark.png";
 import { Link } from "react-router-dom";
 
-export default function CountryInfo({ country }) {
-  const infoCategories = [
+export default function CountryInfo({ country, countries }) {
+    const infoCategories = [
     { label: "Native Name", value: country.name.nativeName ? Object.values(country.name.nativeName)[0].common : country.name.common },
     { label: "Population", value: country.population.toLocaleString() },
     { label: "Region", value: country.region },
     { label: "Sub Region", value: country.subregion },
     { label: "Capital", value: country.capital?.[0] },
-    { label: "Top Level Domain", value: country.tld?.join(", ") },
     { label: "Currencies", value: country.currencies ? Object.values(country.currencies).map(c => c.name).join(", ") : "" },
     { label: "Languages", value: country.languages ? Object.values(country.languages).join(", ") : "" }
-  ]
+    ]
 
-  const borderCountries = country.borders || []
+    const borderCountries = country.borders || [];
 
-  return (
+    const borderCountryNames = borderCountries.map(code => {
+        const match = countries.find(c => c.cca3 === code)
+        return match ? match.name.common : code
+    })
+
+    return (
     <div className="relative pb-5 mx-10 my-12 lg:mx-30">
         <Link to="/">
             <button className="hover:cursor-pointer bg-white dark:bg-[#2d3742] dark:text-white rounded-sm shadow-md pl-15 pr-10 py-2">
@@ -32,38 +36,40 @@ export default function CountryInfo({ country }) {
                 />
                 Back
             </button>
-      </Link>
+        </Link>
 
-      <div className="flex mt-10">
+        <div className="flex mt-10">
         <img className="w-full max-w-lg" src={country.flags.svg} alt={`${country.name.common} flag`} />
-        <div className="ml-30">
-          <h1 className="font-bold text-2xl dark:text-white">{country.name.common}</h1>
+        <div className="ml-30  max-w-200">
+            <h1 className="font-bold text-2xl dark:text-white">{country.name.common}</h1>
 
-          <div className="grid grid-cols-2 gap-y-2 gap-x-20 mt-10 mb-20">
+            <div className="grid grid-cols-2 gap-y-2 gap-x-10 mt-10 mb-20 max-w-150">
             {infoCategories.map((item) => (
-              <p key={item.label} className="font-semibold dark:text-white">
+                <p key={item.label} className="font-semibold dark:text-white">
                 {item.label}: <span className="font-normal">{item.value}</span>
-              </p>
+                </p>
             ))}
-          </div>
+            </div>
 
-          <div className="flex flex-wrap gap-3">
-            <p className="font-semibold dark:text-white">Border Countries:</p>
-            {borderCountries.length > 0 ? (
-              borderCountries.map((border) => (
-                <button
-                  key={border}
-                  className="hover:cursor-pointer dark:text-white dark:bg-[#2d3742] bg-white rounded-sm shadow-md px-5 py-1"
-                >
-                  {border}
-                </button>
-              ))
-            ) : (
-              <span className="dark:text-white">None</span>
-            )}
-          </div>
+            <div className="flex flex-wrap gap-3">
+                <p className="font-semibold dark:text-white">Border Countries:</p>
+                {borderCountryNames.length > 0 ? (
+                    borderCountryNames.map((border) => (
+                    <Link key={border} to={`/country/${border}`}>
+                        <button
+                            key={border}
+                            className="hover:cursor-pointer dark:text-white dark:bg-[#2d3742] bg-white rounded-sm shadow-md px-5 py-1"
+                        >
+                            {border}
+                        </button>
+                    </Link>
+                    ))
+                ) : (
+                    <span className="dark:text-white">None</span>
+                )}
+            </div>
         </div>
-      </div>
+        </div>
     </div>
-  )
+    )
 }

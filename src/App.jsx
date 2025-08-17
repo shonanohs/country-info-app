@@ -15,7 +15,7 @@ export default function App() {
     async function fetchCountries() {
         try {
         const response = await axios.get(
-            "https://restcountries.com/v3.1/all?fields=flags,name,population,region,capital,subregion,tld,currencies,languages,borders"
+            "https://restcountries.com/v3.1/all?fields=flags,name,population,region,capital,subregion,currencies,languages,borders,cca3"
         );
         setCountries(response.data);
         setFilteredCountries(response.data);
