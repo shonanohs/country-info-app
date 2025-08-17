@@ -1,8 +1,8 @@
-import Home from "./pages/Home"
+import Home from "./pages/Home";
 import CountryDetail from "./pages/CountryDetail";
-import { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import axios from 'axios'
+import axios from 'axios';
 
 export default function App() {
     const [countries, setCountries] = useState([])
@@ -15,7 +15,7 @@ export default function App() {
     async function fetchCountries() {
         try {
         const response = await axios.get(
-            "https://restcountries.com/v3.1/all?fields=flags,name,population,region,capital"
+            "https://restcountries.com/v3.1/all?fields=flags,name,population,region,capital,subregion,tld,currencies,languages,borders"
         );
         setCountries(response.data);
         setFilteredCountries(response.data);
@@ -41,7 +41,7 @@ export default function App() {
               error={error}
               />} 
             />
-            <Route path="/country" element={<CountryDetail />} />
+            <Route path="/country/:countryName" element={<CountryDetail countries={countries}/>} />
         </Routes>
       </BrowserRouter>
     </>

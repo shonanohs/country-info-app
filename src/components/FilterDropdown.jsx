@@ -1,6 +1,6 @@
 import { useState } from "react";
-import dropdownLight from "../assets/dropdown-arrow.png"
-import dropdownDark from "../assets/dropdown-arrow-dark.png"
+import dropdownLight from "../assets/dropdown-arrow.png";
+import dropdownDark from "../assets/dropdown-arrow-dark.png";
 
 const regions = ["Africa", "Americas", "Asia", "Europe", "Oceania"];
 
