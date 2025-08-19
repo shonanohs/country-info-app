@@ -1,6 +1,6 @@
 import CountryCard from "./CountryCard";
 
-export default function CountryGrid( {filteredCountries, loading, error} ) {
+export default function CountryGrid( {filteredCountries, countries, loading, error, setFilteredCountries} ) {
     if (loading) return <p>Loading countries...</p>
     if (error) return <p>Error: {error}</p>
 
@@ -13,7 +13,9 @@ export default function CountryGrid( {filteredCountries, loading, error} ) {
                         name={country.name.common} 
                         population={country.population} 
                         region={country.region} 
-                        capital={country.capital[0]}/>
+                        capital={country.capital[0]}
+                        setFilteredCountries={setFilteredCountries}
+                        countries={countries} />
                     ))}
         </div>
     )

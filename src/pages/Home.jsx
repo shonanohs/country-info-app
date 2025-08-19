@@ -12,7 +12,7 @@ export default function Home( {filteredCountries, setFilteredCountries, countrie
                     <SearchBar setFilteredCountries={setFilteredCountries} countries={countries}/>
                     <FilterDropdown setFilteredCountries={setFilteredCountries} countries={countries} />
                 </div>
-                <CountryGrid filteredCountries={filteredCountries} />
+                <CountryGrid filteredCountries={filteredCountries} countries={countries} />
             </div>
         </>
     )
