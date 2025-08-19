@@ -38,12 +38,12 @@ export default function CountryInfo({ country, countries }) {
             </button>
         </Link>
 
-        <div className="flex mt-10">
+        <div className="flex flex-col lg:flex-row mt-10 items-start">
             <img className="w-full max-w-lg" src={country.flags.svg} alt={`${country.name.common} flag`} />
-            <div className="ml-30  min-w-250 max-w-250">
+            <div className="lg:ml-30 mt-5 lg:mt-0">
                 <h1 className="font-bold text-2xl dark:text-white">{country.name.common}</h1>
 
-                <div className="grid grid-cols-2 gap-y-2 gap-x-30 mt-10 mb-20 max-w-150">
+                <div className="grid xl:grid-cols-2 grid-cols-1 gap-y-2 gap-x-30 mt-10 mb-20 max-w-150">
                 {infoCategories.map((item) => (
                     <p key={item.label} className="font-semibold dark:text-white">
                     {item.label}: <span className="font-normal">{item.value}</span>
@@ -51,22 +51,24 @@ export default function CountryInfo({ country, countries }) {
                 ))}
                 </div>
 
-                <div className="flex flex-wrap gap-3">
-                    <p className="font-semibold dark:text-white">Border Countries:</p>
-                    {borderCountryNames.length > 0 ? (
-                        borderCountryNames.map((border) => (
-                        <Link key={border} to={`/country/${border}`}>
-                            <button
-                                key={border}
-                                className="hover:cursor-pointer dark:text-white dark:bg-[#2d3742] bg-white rounded-sm shadow-md px-5 py-1"
-                            >
-                                {border}
-                            </button>
-                        </Link>
-                        ))
-                    ) : (
-                        <span className="dark:text-white">None</span>
-                    )}
+                <div>
+                    <p className="font-semibold dark:text-white mb-5">Border Countries:</p>
+                    <div className="flex flex-wrap gap-2">
+                        {borderCountryNames.length > 0 ? (
+                            borderCountryNames.map((border) => (
+                            <Link key={border} to={`/country/${border}`}>
+                                <button
+                                    key={border}
+                                    className="hover:cursor-pointer dark:text-white dark:bg-[#2d3742] bg-white rounded-sm shadow-md px-5 py-1"
+                                >
+                                    {border}
+                                </button>
+                            </Link>
+                            ))
+                        ) : (
+                            <span className="dark:text-white">None</span>
+                        )}
+                    </div>
                 </div>
             </div>
         </div>
