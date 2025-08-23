@@ -29,13 +29,14 @@ Additional Features Added:
 ### Mobile:
 <img width="200" height="339.6" alt="image" src="https://github.com/user-attachments/assets/d8bc6c16-74d6-4de0-bc3f-d5ac986f069e"/>
 <img width="200" height="339.6" alt="image" src="https://github.com/user-attachments/assets/858bd5c2-60ce-4c32-a1d3-a77112c6d3fd"/>
-
+<img width="200" height="339.6" alt="image" src="https://github.com/user-attachments/assets/43173fc9-c748-476c-a119-04f7ccd5195d"/>
 
 
 ## 🔗 Links
-- Live Site URL: TBD
+- Live Site URL: https://whereinwrld.netlify.app/
 
 ## 🛠️ Built With
 - React
 - Tailwind CSS
+
 
