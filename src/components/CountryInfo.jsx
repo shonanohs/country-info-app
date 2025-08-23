@@ -51,7 +51,7 @@ export default function CountryInfo({ country, countries }) {
         </Link>
 
         <div className="flex flex-col lg:flex-row mt-10 items-start">
-            <div className="relative w-full max-w-lg">
+            <div className="relative w-full max-w-lg min-h-80">
                 {!imgLoaded && (
                     <div className="absolute inset-0 flex items-center justify-center">
                         <div className="h-8 w-8 border-4 border-gray-300 border-t-blue-500 rounded-full animate-spin"></div>
