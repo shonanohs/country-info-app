@@ -11,7 +11,6 @@ export default function CountryDetail({ countries }) {
         (c) => c.name.common.toLowerCase() === countryName.toLowerCase()
     );
 
-
     useEffect(() => {
     if (!country) {
         const timer = setTimeout(() => setShowNotFound(true), 250)
@@ -22,14 +21,14 @@ export default function CountryDetail({ countries }) {
     }, [country])
 
     if (!country && showNotFound) {
-    return (
-        <>
-        <Header />
-        <div className="flex items-center justify-center h-[calc(100vh-6rem)]">
-            <p className="dark:text-white text-xl">Country not found</p>
-        </div>
-        </>
-    )
+        return (
+            <>
+            <Header />
+            <div className="flex items-center justify-center h-[calc(100vh-6rem)]">
+                <p className="dark:text-white text-xl">Country not found</p>
+            </div>
+            </>
+        )
     }
 
     if (!country) return <Header />
