@@ -1,6 +1,7 @@
 import backLight from "../assets/back.png";
 import backDark from "../assets/back-dark.png";
 import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 export default function CountryInfo({ country, countries }) {
     const infoCategories = [
@@ -14,11 +15,22 @@ export default function CountryInfo({ country, countries }) {
     ]
 
     const borderCountries = country.borders || [];
+    const [imgLoaded, setImgLoaded] = useState(false);
 
     const borderCountryNames = borderCountries.map(code => {
         const match = countries.find(c => c.cca3 === code)
         return match ? match.name.common : code
     })
+
+    useEffect(() => {
+        setImgLoaded(false);
+        const img = new Image();
+        img.src = country.flags.svg;
+
+        img.onload = () => setImgLoaded(true);
+        img.onerror = () => setImgLoaded(true);
+    }, [country.cca3, country.flags.svg]);
+    
 
     return (
     <div className="relative pb-5 mx-10 my-12 lg:mx-30">
@@ -39,11 +51,24 @@ export default function CountryInfo({ country, countries }) {
         </Link>
 
         <div className="flex flex-col lg:flex-row mt-10 items-start">
-            <img className="w-full max-w-lg" src={country.flags.svg} alt={`${country.name.common} flag`} />
+            <div className="relative w-full max-w-lg">
+                {!imgLoaded && (
+                    <div className="absolute inset-0 flex items-center justify-center">
+                        <div className="h-8 w-8 border-4 border-gray-300 border-t-blue-500 rounded-full animate-spin"></div>
+                    </div>
+                )}
+                <img className={`w-full h-full object-cover transition-opacity duration-500 ${
+                                imgLoaded ? "opacity-100" : "opacity-0"
+                                }`} 
+                    src={country.flags.svg} 
+                    alt={`${country.name.common} flag`} 
+                    onLoad={()=> setImgLoaded(true)} 
+                />
+            </div>
             <div className="lg:ml-30 mt-5 lg:mt-0">
                 <h1 className="font-bold text-2xl dark:text-white">{country.name.common}</h1>
 
-                <div className="grid xl:grid-cols-2 grid-cols-1 gap-y-2 gap-x-30 mt-10 mb-20 max-w-150">
+                <div className="grid grid-cols-1 xl:grid-cols-2 gap-y-2 gap-x-10 mt-10 mb-20">
                 {infoCategories.map((item) => (
                     <p key={item.label} className="font-semibold dark:text-white">
                     {item.label}: <span className="font-normal">{item.value}</span>
@@ -53,7 +78,7 @@ export default function CountryInfo({ country, countries }) {
 
                 <div>
                     <p className="font-semibold dark:text-white mb-5">Border Countries:</p>
-                    <div className="flex flex-wrap gap-2">
+                    <div className="flex flex-wrap gap-2 max-w-150">
                         {borderCountryNames.length > 0 ? (
                             borderCountryNames.map((border) => (
                             <Link key={border} to={`/country/${border}`}>
