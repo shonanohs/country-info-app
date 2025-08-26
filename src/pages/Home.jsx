@@ -36,7 +36,7 @@ export default function Home( {countries, searchText, setSearchText, selectedReg
         <Header />
         <div className="mx-10 my-12 lg:mx-30">
             <div className="flex flex-col md:flex-row pb-12 justify-between items-center">
-                <SearchBar setSearchText={setSearchText}/>
+                <SearchBar setSearchText={setSearchText} searchText={searchText} />
                 <FilterDropdown selectedRegions={selectedRegions} setSelectedRegions={setSelectedRegions} />
             </div>
             <CountryGrid filteredCountries={filteredCountries} loading={loading} error={error} />

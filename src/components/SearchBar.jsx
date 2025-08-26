@@ -1,13 +1,9 @@
 import search from "../assets/search.png";
 import searchDark from "../assets/search-dark.png";
 
-export default function SearchBar({ setFilteredCountries, countries }) {
+export default function SearchBar({ setSearchText, searchText }) {
   function handleSearch(e) {
-    const search = e.target.value.toLowerCase()
-    const searchMatches = countries.filter(country =>
-      country.name.common.toLowerCase().includes(search)
-    );
-    setFilteredCountries(searchMatches)
+    setSearchText(e.target.value);
   }
 
   return (
@@ -25,6 +21,7 @@ export default function SearchBar({ setFilteredCountries, countries }) {
       <input
         type="text"
         placeholder="Search for a country..."
+        value={searchText}
         onChange={handleSearch}
         className="bg-white dark:bg-[#2d3742] dark:text-white rounded-sm shadow-md pl-15 pr-33 py-4 z-0 focus:outline-0"
       />
