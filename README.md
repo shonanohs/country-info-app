@@ -3,7 +3,7 @@ This is a solution to the ['REST Countries API with color theme switcher' challe
 The result is a country info dashboard that allows uses to view, filter and search for countries as well as view additional information about each country on its own detail page.
 
 ## 🎯 The Challenge
-Users should be able to:
+*Users should be able to:*
 - See all countries from the API on the homepage
 - **Search** for a country using an input field
 - **Filter** countries by region
@@ -13,7 +13,7 @@ Users should be able to:
 - See hover and focus states for all interactive elements on the page
 - **Bonus:** Toggle the **colour scheme** between light and dark mode
 
-Additional Features Added:
+*Additional features added:*
 - Persistence of colour scheme upon reload using **local storage**
 - Ability to **multi-select** when filtering by region
 - **Transitions** for a smoother user experience
@@ -38,5 +38,6 @@ Additional Features Added:
 ## 🛠️ Built With
 - React
 - Tailwind CSS
+
 
 
