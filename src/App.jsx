@@ -5,45 +5,46 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import axios from 'axios';
 
 export default function App() {
-    const [countries, setCountries] = useState([])
-    const [filteredCountries, setFilteredCountries] = useState([])
-    const [error, setError] = useState(null)
-    const [loading, setLoading] = useState(true)
+  const [countries, setCountries] = useState([]);
+  const [searchText, setSearchText] = useState("");
+  const [selectedRegions, setSelectedRegions] = useState([]);
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(true);
 
-    // Fetch country info to display from REST Countries API
-    useEffect(() => {
+  // Fetch country info to display from REST Countries API
+  useEffect(() => {
     async function fetchCountries() {
-        try {
+      try {
         const response = await axios.get(
-            "https://restcountries.com/v3.1/all?fields=flags,name,population,region,capital,subregion,currencies,languages,borders,cca3"
+          "https://restcountries.com/v3.1/all?fields=flags,name,population,region,capital,subregion,currencies,languages,borders,cca3"
         );
         setCountries(response.data);
-        setFilteredCountries(response.data);
-        } catch (error) {
+      } catch (error) {
         setError(error);
-        } finally {
-          setLoading(false);
-        }
+      } finally {
+        setLoading(false);
+      }
     }
     fetchCountries();
-    }, []);
+  }, []);
 
   return (
-    <>
-      <BrowserRouter>
-        <Routes>
-            <Route index element={
-              <Home 
-              filteredCountries={filteredCountries} 
-              setFilteredCountries={setFilteredCountries} 
-              countries={countries} 
-              loading={loading} 
+    <BrowserRouter>
+      <Routes>
+        <Route index element={
+            <Home
+              countries={countries}
+              searchText={searchText}
+              setSearchText={setSearchText}
+              selectedRegions={selectedRegions}
+              setSelectedRegions={setSelectedRegions}
+              loading={loading}
               error={error}
-              />} 
             />
-            <Route path="/country/:countryName" element={<CountryDetail countries={countries}/>} />
-        </Routes>
-      </BrowserRouter>
-    </>
+          }
+        />
+        <Route path="/country/:countryName" element={<CountryDetail countries={countries} />}/>
+      </Routes>
+    </BrowserRouter>
   )
 }

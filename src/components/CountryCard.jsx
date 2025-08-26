@@ -1,14 +1,10 @@
 import { NumericFormat } from 'react-number-format';
 import { Link } from "react-router-dom";
 
-export default function CountryCard({ flag, name, population, region, capital, setFilteredCountries, countries }) {
-
-  function resetFilter() {
-    setFilteredCountries(countries);
-  }
+export default function CountryCard({ flag, name, population, region, capital }) {
 
   return (
-    <Link to={`/country/${name}`} onClick={resetFilter}>
+    <Link to={`/country/${name}`}>
       <div className="bg-white rounded-md shadow-md hover:cursor-pointer dark:bg-[#2d3742]">
         <div className="w-full h-48 overflow-hidden rounded-t-md">
           <img
